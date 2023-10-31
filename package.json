@@ -1,0 +1,31 @@
+{
+  "name": "frontend-mentor-template",
+  "version": "1.0.0",
+  "description": "a template repo for my frontend mentor projects",
+  "repository": "https://github.com/retchohrips/frontend-mentor-template",
+  "author": "retchohrips",
+  "private": true,
+  "scripts": {
+    "postinstall": "husky install",
+    "commit": "git-cz"
+  },
+  "config": {
+    "commitizen": {
+      "path": "@commitlint/prompt"
+    }
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/prompt": "^18.2.0",
+    "commitizen": "^4.3.0",
+    "husky": "^8.0.3",
+    "prettier": "^3.0.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^34.0.0"
+  }
+}

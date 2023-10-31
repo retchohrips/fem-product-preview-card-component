@@ -1,0 +1,9 @@
+# Do not remove lines 2-4, avoid uploading design files
+*.sketch
+*.fig
+*.xd
+
+.DS_Store
+node_modules
+yarn.lock
+*.log
