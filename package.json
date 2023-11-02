@@ -1,8 +1,5 @@
 {
-  "name": "frontend-mentor-template",
-  "version": "1.0.0",
-  "description": "a template repo for my frontend mentor projects",
-  "repository": "https://github.com/retchohrips/frontend-mentor-template",
+  "name": "product-preview-card-component",
   "author": "retchohrips",
   "private": true,
   "scripts": {
@@ -24,8 +21,12 @@
     "commitizen": "^4.3.0",
     "husky": "^8.0.3",
     "prettier": "^3.0.3",
+    "sass": "^1.69.5",
     "stylelint": "^15.11.0",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-config-standard": "^34.0.0"
+    "stylelint-config-standard": "^34.0.0",
+    "stylelint-config-standard-scss": "^11.0.0"
+  },
+  "dependencies": {
+    "stylelint-config-recess-order": "^4.3.0"
   }
 }

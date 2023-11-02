@@ -1,0 +1,217 @@
+@use "sass:math";
+
+// Imports
+@import "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap";
+@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css";
+
+/// Converts PX to REM
+/// @access public
+/// @param {string} $size - Value to be converted in PX.
+/// @returns {string} - Returns REM string.
+/// @example font-size: rem(24px);
+/// @returns font-size: 1.5rem;
+@function rem($size) {
+  $rem-size: math.div($size, 16px);
+
+  @return #{$rem-size}rem;
+}
+
+// Variables
+// Sizes
+$mobile: 375px;
+$desktop: 960px;
+$paragraph: 14px;
+$rounding: 10px;
+
+// Colors
+$dark-cyan: hsl(158deg 36% 37%);
+$dark-cyan--hover: #1a4031;
+$cream: hsl(30deg 38% 92%);
+$very-dark-blue: hsl(212deg 21% 14%);
+$dark-grayish-blue: hsl(228deg 12% 48%);
+$white: hsl(0deg 0% 100%);
+$base-font: montserrat, sans-serif;
+$fancy-font: fraunces, serif;
+
+@mixin desktop {
+  @media (width >= rem($desktop)) {
+    @content;
+  }
+}
+
+// Screen reader only
+%sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+mark,
+del,
+s {
+  position: relative;
+
+  &::before,
+  &::after {
+    @extend %sr-only;
+  }
+}
+
+s::before {
+  content: " [strike-through start] ";
+}
+
+s::after {
+  content: " [strike-through end] ";
+}
+
+// End screen reader only
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: $base-font;
+  color: $dark-grayish-blue;
+  background-color: $cream;
+}
+
+main {
+  display: flex;
+  place-items: center center;
+  justify-content: center;
+  height: 100vh;
+  font-size: rem($paragraph);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 22rem;
+  background-color: $white;
+  border-radius: $rounding;
+
+  @include desktop {
+    flex-direction: row;
+    max-width: 40rem;
+    height: 25rem;
+  }
+
+  &__img {
+    width: 100%;
+    border-radius: $rounding $rounding 0 0;
+
+    @include desktop {
+      width: unset;
+      height: 100%;
+      border-radius: $rounding 0 0 $rounding;
+    }
+  }
+
+  &__ribbon {
+    margin-block: 1rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+  }
+
+  &__title {
+    margin-block: 1rem;
+    font-family: $fancy-font;
+    font-size: 2rem;
+    color: $very-dark-blue;
+    text-wrap: balance;
+  }
+
+  &__text-half {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    @include desktop {
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    > * {
+      margin-block: 1rem 0;
+      margin-inline: 1rem;
+      text-wrap: balance;
+
+      @include desktop {
+        margin-inline: 2rem;
+      }
+    }
+  }
+
+  &__prices {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+
+    s {
+      font-size: 0.9rem;
+    }
+
+    @include desktop {
+      gap: 1.5rem;
+    }
+  }
+
+  &__price {
+    font-family: $fancy-font;
+    font-size: 2rem;
+    color: $dark-cyan;
+  }
+
+  &__btn {
+    display: flex;
+    gap: 1rem;
+    align-self: center;
+    justify-content: center;
+    width: 75%;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+    color: $white;
+    background-color: $dark-cyan;
+    border: 0;
+    border-radius: $rounding;
+    transition: 250ms ease-in-out;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      background-color: $dark-cyan--hover;
+    }
+  }
+}
+
+// Footer
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.attribution {
+  font-size: rem(11px);
+  text-align: center;
+
+  & a {
+    color: hsl(228deg 45% 44%);
+  }
+}
